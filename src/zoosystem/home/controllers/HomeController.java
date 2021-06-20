@@ -46,12 +46,12 @@ public class HomeController implements Initializable {
     @FXML
     private void CategoryMenuItemOnClick(ActionEvent event) throws IOException {
        
- new NavigationHelper().navigateTo(MenuBar,"home/view/AddCategoryFXML.fxml","Add Category");
+ NavigationHelper.getInstance().navigateTo(MenuBar,"home/view/AddCategoryFXML.fxml","Add Category");
     }
 
     @FXML
     private void AnimalMenuItemOnClick(ActionEvent event) throws IOException {
-         new NavigationHelper().navigateTo(MenuBar,"home/view/AddAnimalFXML.fxml","Add Animal");
+       NavigationHelper.getInstance().navigateTo(MenuBar,"home/view/AddAnimalFXML.fxml","Add Animal");
     }
     
     

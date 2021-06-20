@@ -42,6 +42,8 @@ public class AddCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    
+    CategoryNameAddTF.requestFocus();
     }    
 
     @FXML
@@ -61,7 +63,7 @@ public class AddCategoryController implements Initializable {
     @FXML
     private void BackBtnClick(ActionEvent event) throws IOException {
         
-                 new NavigationHelper().navigateTo(backBtn,"home/view/HomeFXML.fxml");
+               NavigationHelper.getInstance(). navigateTo(backBtn,"home/view/HomeFXML.fxml");
 
     }
     

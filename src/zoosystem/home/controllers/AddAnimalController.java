@@ -59,7 +59,7 @@ public class AddAnimalController implements Initializable {
 
     @FXML
     private void BackBtnClick(ActionEvent event) throws IOException {
-         new NavigationHelper().navigateTo(backBtn,"home/view/HomeFXML.fxml");
+        NavigationHelper.getInstance().navigateTo(backBtn,"home/view/HomeFXML.fxml");
 
     }
     

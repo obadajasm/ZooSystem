@@ -16,7 +16,7 @@ public class DialogUtil {
 
     private static DialogUtil instance;
 
-    private DialogUtil() { };
+    private DialogUtil() {};
     
     public static DialogUtil getInstance() {
         if (instance == null) {

@@ -17,7 +17,14 @@ import javafx.stage.Stage;
  * @author obadaJasm
  */
 public class NavigationHelper {
-    
+    private static  NavigationHelper instance;
+    private NavigationHelper(){};
+    public static NavigationHelper getInstance(){
+    if(instance==null){
+        instance= new NavigationHelper();
+    }
+    return instance;
+    } 
     public void navigateTo(Node node,String path,String title) throws IOException{
         
         try{

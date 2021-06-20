@@ -42,7 +42,7 @@ public class AuthController implements Initializable {
 //        }
         ///
         try{
-            new NavigationHelper().navigateTo(loginBtn,"home/view/HomeFXML.fxml");
+           NavigationHelper.getInstance().navigateTo(loginBtn,"home/view/HomeFXML.fxml");
         }catch(Exception e){
     System.out.println(e.getCause()
     );
