@@ -27,7 +27,7 @@ public class ZooSystem extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
-            System.out.println("SSSSSSSSSSSSSS" + e);
+            System.out.println( e);
         }
     }
 

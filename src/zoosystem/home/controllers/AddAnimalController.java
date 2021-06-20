@@ -5,6 +5,7 @@
  */
 package zoosystem.home.controllers;
 
+import Utils.DialogUtil;
 import Utils.NavigationHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +46,13 @@ public class AddAnimalController implements Initializable {
 
     @FXML
     private void AddAnimalBtnClick(ActionEvent event) throws IOException {
+        final String name = AnimalNameAddTF.getText();
+        final String desc = AnimalNameDescriptionTF.getText();
+        
+         if(name.isEmpty()||desc.isEmpty()){
+            DialogUtil.getInstance().show("Animal name and description are required", "Error");
+                   return; 
+        }
         
        
     }

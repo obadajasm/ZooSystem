@@ -10,8 +10,8 @@
    <children>
       <Button id="loginBtn" fx:id="loginBtn" layoutX="239.0" layoutY="307.0" mnemonicParsing="false" onAction="#loginBtnClck" text="login" />
       <Button id="signupBtn" layoutX="336.0" layoutY="307.0" mnemonicParsing="false" onAction="#signupClck" text="signup" />
-      <TextField id="passwordTF" layoutX="239.0" layoutY="252.0" promptText="Password" />
-      <TextField id="emailTF" layoutX="239.0" layoutY="200.0" promptText="Email" />
+      <TextField fx:id="passwordTF" layoutX="239.0" layoutY="252.0" promptText="Password" />
+      <TextField fx:id="emailTF" layoutX="239.0" layoutY="200.0" promptText="Email" />
       <ImageView fitHeight="197.0" fitWidth="400.0" layoutX="100.0" pickOnBounds="true">
          <image>
             <Image url="@../../assets/images/logo.png" />

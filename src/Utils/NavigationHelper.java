@@ -18,24 +18,26 @@ import javafx.stage.Stage;
  */
 public class NavigationHelper {
     
-    public  void navigateTo(Node node,String path,String title) throws IOException{
+    public void navigateTo(Node node,String path,String title) throws IOException{
         
         try{
-           Stage stage = (Stage) node.getScene().getWindow();
+        Stage stage = (Stage) node.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/zoosystem/"+path));
             AnchorPane root = loader.load();
             Scene scene = new Scene(root);
             stage.setTitle(title);
             stage.setScene(scene);
-            stage.show();}catch(Exception e ){
+            stage.show();
+        }catch(Exception e ){
             System.out.println("Error in navigate to:"+e.getMessage());
             }
     }
-    
+    ///overload the navigateTo to pass the last param
+    //to make it optional
       public  void navigateTo(Node node,String path) throws IOException{
         
         try{
-        navigateTo(node,path,"Zoo Sysytem");
+        navigateTo(node,path,"Zoo System");
         }catch(IOException e ){
             System.out.println("Error in navigate to:"+e.getMessage());
             }
