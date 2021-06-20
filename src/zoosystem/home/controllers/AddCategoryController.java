@@ -42,8 +42,6 @@ public class AddCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    
-    CategoryNameAddTF.requestFocus();
     }    
 
     @FXML

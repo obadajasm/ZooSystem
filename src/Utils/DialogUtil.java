@@ -29,6 +29,10 @@ public class DialogUtil {
         Alert alert = new Alert(type, contentText, buttons);
         alert.setTitle(title);
         alert.show();
+//        alert.showAndWait();
+//        if (alert.getResult() == ButtonType.YES) {
+//    //do stuff
+//}
     }
 
     public  void show(String contentText,String title, ButtonType... buttons) {

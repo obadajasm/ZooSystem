@@ -42,6 +42,7 @@ public class AddAnimalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        backBtn.requestFocus();
     }    
 
     @FXML
