@@ -5,6 +5,7 @@
  */
 package zoosystem.home.controllers;
 
+import Utils.DialogUtil;
 import Utils.NavigationHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +46,14 @@ public class AddCategoryController implements Initializable {
 
     @FXML
     private void AddCategoryBtnClick(ActionEvent event) {
+        
+           final String name = CategoryNameAddTF.getText();
+        final String desc = CategoryNameDescriptionTF.getText();
+        
+         if(name.isEmpty()||desc.isEmpty()){
+            DialogUtil.getInstance().show("Category name and description are required", "Error");
+                   return; 
+        }
         
           
     }

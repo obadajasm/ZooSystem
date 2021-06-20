@@ -11,14 +11,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -29,14 +25,18 @@ public class HomeController implements Initializable {
     
     @FXML  private MenuBar  MenuBar;
     @FXML
-    private Menu ExitMenu;
+    private Menu moreMenu;
+    @FXML
+    private MenuItem exiteMenuItem;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                        ExitMenu.setOnAction(e->{
+                        exiteMenuItem.setOnAction(e->{
                                                 System.exit(0)
                                 
                                 ;});

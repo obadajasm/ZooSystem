@@ -25,7 +25,11 @@
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
-          <Menu fx:id="ExitMenu" mnemonicParsing="false" text="Exit" />
+          <Menu fx:id="moreMenu" mnemonicParsing="false" text="More">
+               <items>
+                  <MenuItem  mnemonicParsing="false" fx:id="exiteMenuItem" text="Exit"/>
+               </items>
+          </Menu>
         </menus>
       </MenuBar>
    </children>
