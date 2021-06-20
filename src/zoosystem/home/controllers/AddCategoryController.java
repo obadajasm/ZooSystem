@@ -5,6 +5,7 @@
  */
 package zoosystem.home.controllers;
 
+import Utils.NavigationHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,14 +52,8 @@ public class AddCategoryController implements Initializable {
     @FXML
     private void BackBtnClick(ActionEvent event) throws IOException {
         
-            Stage stage = (Stage) backBtn.getScene().getWindow();
+                 new NavigationHelper().navigateTo(backBtn,"home/view/HomeFXML.fxml");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/HomeFXML.fxml"));
-            AnchorPane root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setTitle("Home");
-            stage.setScene(scene);
-            stage.show();
     }
     
 }

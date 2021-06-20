@@ -5,6 +5,7 @@
  */
 package zoosystem.auth.controllers;
 
+import Utils.NavigationHelper;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
@@ -29,13 +30,9 @@ public class AuthController implements Initializable {
     @FXML
     private void loginBtnClck(ActionEvent event) throws IOException,InvocationTargetException  {
         try{
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../home/view/HomeFXML.fxml"));
-            AnchorPane root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setTitle("Hello World!");
-            stage.setScene(scene);
-            stage.show();
+            
+                     new NavigationHelper().navigateTo(loginBtn,"home/view/HomeFXML.fxml");
+
         }catch(Exception e){
     System.out.println(e.getCause()
     );

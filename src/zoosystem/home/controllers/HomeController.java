@@ -5,6 +5,7 @@
  */
 package zoosystem.home.controllers;
 
+import Utils.NavigationHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,11 +36,8 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-                        
                         ExitMenu.setOnAction(e->{
-                        
-                        System.exit(0)
+                                                System.exit(0)
                                 
                                 ;});
 
@@ -47,26 +45,13 @@ public class HomeController implements Initializable {
 
     @FXML
     private void CategoryMenuItemOnClick(ActionEvent event) throws IOException {
-        
-                Stage stage = (Stage) MenuBar.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/AddCategoryFXML.fxml"));
-            AnchorPane root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setTitle("Add Category");
-            stage.setScene(scene);
-            stage.show();
+       
+ new NavigationHelper().navigateTo(MenuBar,"home/view/AddCategoryFXML.fxml","Add Category");
     }
 
     @FXML
     private void AnimalMenuItemOnClick(ActionEvent event) throws IOException {
-           Stage stage = (Stage) MenuBar.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/AddAnimalFXML.fxml"));
-            AnchorPane root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setTitle("Add Animal");
-            stage.setScene(scene);
-            stage.show();
+         new NavigationHelper().navigateTo(MenuBar,"home/view/AddAnimalFXML.fxml","Add Animal");
     }
     
     
