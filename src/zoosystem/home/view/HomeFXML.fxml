@@ -14,7 +14,7 @@
           <Menu mnemonicParsing="false" text="Add">
             <items>
               <MenuItem id="CategoryMenuItem" mnemonicParsing="false" onAction="#CategoryMenuItemOnClick" text="Category" />
-                          <MenuItem id="AnimalMenuItem" mnemonicParsing="false" onAction="#AnimalMenuItemOnClick" text="Animal" />
+   <MenuItem id="AnimalMenuItem" mnemonicParsing="false" onAction="#AnimalMenuItemOnClick" text="Animal" />
 
             </items>
             
@@ -27,7 +27,8 @@
           </Menu>
           <Menu fx:id="moreMenu" mnemonicParsing="false" text="More">
                <items>
-                  <MenuItem  mnemonicParsing="false" fx:id="exiteMenuItem" text="Exit"/>
+                  <MenuItem fx:id="usersMenuItem" mnemonicParsing="false" onAction="#usersMenuItemOnCLick" text="Users" />
+                  <MenuItem fx:id="exiteMenuItem" mnemonicParsing="false" text="Exit" />
                </items>
           </Menu>
         </menus>

@@ -45,11 +45,10 @@ public class AuthController implements Initializable {
 
     @FXML
     private void loginBtnClck(ActionEvent event) throws IOException, InvocationTargetException {
+            NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
 
         if (isLogin) {
-            System.out.println("Login logic here");
             final ArrayList<User> users = userDAO.getUsers();
-            System.out.println(users.get(0).getEmail());
 
             final String password = passwordTF.getText().toLowerCase().trim();
             final String email = emailTF.getText().toLowerCase().trim();
@@ -65,6 +64,8 @@ public class AuthController implements Initializable {
                 }
             }
         } else {
+                        ///toogle login/signup mode
+
             isLogin = !isLogin;
             signupBtn.setLayoutY(350.0);
             loginBtn.setLayoutY(300);
@@ -91,9 +92,9 @@ public class AuthController implements Initializable {
     private void signupClck(ActionEvent event) throws IOException {
 
         if (isLogin) {
+            ///toogle login/signup mode
             isLogin = !isLogin;
             userNameTF.setVisible(!isLogin);
-
             loginBtn.setLayoutY(350.0);
             loginBtn.setText("login ?");
             signupBtn.setText("Signup");
@@ -101,17 +102,16 @@ public class AuthController implements Initializable {
             signupBtn.setPrefWidth(150.0);
             loginBtn.setPrefWidth(100.0);
         } else {
-            final String password = passwordTF.getText().trim();
-            final String email = emailTF.getText().trim();
-            final String userName = userNameTF.getText().trim();
+            final String password = passwordTF.getText();
+            final String email = emailTF.getText();
+            final String userName = userNameTF.getText();
             if (password.isEmpty() || email.isEmpty() || userName.isEmpty()) {
                 DialogUtil.getInstance().show("Passowrd, Email, User Name are required", "Error");
                 return;
             }
             final ArrayList<User> users = userDAO.getUsers();
-
             for (User user : users) {
-                if (email.equals(user.getEmail().toLowerCase())) {
+                if (email.trim().equals(user.getEmail().toLowerCase())) {
                     DialogUtil.getInstance().show("Email Already taken", "Error");
                     return;
                 }
