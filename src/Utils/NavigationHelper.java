@@ -35,7 +35,7 @@ public class NavigationHelper {
             stage.setTitle(title);
             stage.setScene(scene);
             stage.show();
-        }catch(Exception e ){
+        }catch(IOException e ){
             System.out.println("Error in navigate to:"+e.getMessage());
             }
     }

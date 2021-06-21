@@ -5,11 +5,13 @@
  */
 package zoosystem.auth.controllers;
 
+import DAOs.UserDAO;
 import Utils.DialogUtil;
 import Utils.NavigationHelper;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import models.User;
 
 /**
  * FXML Controller class
@@ -26,38 +29,96 @@ import javafx.scene.control.TextField;
  * @author obadaJasm
  */
 public class AuthController implements Initializable {
-  public Button loginBtn;
+
+    public Button loginBtn;
     @FXML
     private TextField passwordTF;
     @FXML
     private TextField emailTF;
+    @FXML
+    private TextField userNameTF;
+    @FXML
+    private Button signupBtn;
+
+    private Boolean isLogin = true;
+    private final UserDAO userDAO = new UserDAO();
 
     @FXML
-    private void loginBtnClck(ActionEvent event) throws IOException,InvocationTargetException  {
-        final String  password= passwordTF.getText();
-        final String  email= emailTF.getText();
-//        if(password.isEmpty()||email.isEmpty()){
-//            DialogUtil.getInstance().show("Passowrd and Email are required", "Error");
-//                   return; 
-//        }
-        ///
-        try{
-           NavigationHelper.getInstance().navigateTo(loginBtn,"home/view/HomeFXML.fxml");
-        }catch(Exception e){
-    System.out.println(e.getCause()
-    );
-}
-               
-    }
+    private void loginBtnClck(ActionEvent event) throws IOException, InvocationTargetException {
 
+        if (isLogin) {
+            System.out.println("Login logic here");
+            final ArrayList<User> users = userDAO.getUsers();
+            System.out.println(users.get(0).getEmail());
+
+            final String password = passwordTF.getText().toLowerCase().trim();
+            final String email = emailTF.getText().toLowerCase().trim();
+            if (password.isEmpty() || email.isEmpty()) {
+                DialogUtil.getInstance().show("Passowrd and Email are required", "Error");
+                return;
+            }
+
+            for (User user : users) {
+                if (email.equals(user.getEmail().toLowerCase()) && password.equals(user.getPassword().toLowerCase())) {
+                    NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
+                    break;
+                }
+            }
+        } else {
+            isLogin = !isLogin;
+            signupBtn.setLayoutY(350.0);
+            loginBtn.setLayoutY(300);
+            loginBtn.setText("login");
+            signupBtn.setText("Signup ?");
+            signupBtn.setPrefWidth(100.0);
+            loginBtn.setPrefWidth(150.0);
+
+            userNameTF.setVisible(!isLogin);
+
+        }
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-   
+        userNameTF.setVisible(!isLogin);
+        signupBtn.setPrefWidth(100.0);
+        loginBtn.setPrefWidth(150.0);
+
     }
 
     @FXML
-    private void signupClck(ActionEvent event) {
+    private void signupClck(ActionEvent event) throws IOException {
+
+        if (isLogin) {
+            isLogin = !isLogin;
+            userNameTF.setVisible(!isLogin);
+
+            loginBtn.setLayoutY(350.0);
+            loginBtn.setText("login ?");
+            signupBtn.setText("Signup");
+            signupBtn.setLayoutY(300);
+            signupBtn.setPrefWidth(150.0);
+            loginBtn.setPrefWidth(100.0);
+        } else {
+            final String password = passwordTF.getText().trim();
+            final String email = emailTF.getText().trim();
+            final String userName = userNameTF.getText().trim();
+            if (password.isEmpty() || email.isEmpty() || userName.isEmpty()) {
+                DialogUtil.getInstance().show("Passowrd, Email, User Name are required", "Error");
+                return;
+            }
+            final ArrayList<User> users = userDAO.getUsers();
+
+            for (User user : users) {
+                if (email.equals(user.getEmail().toLowerCase())) {
+                    DialogUtil.getInstance().show("Email Already taken", "Error");
+                    return;
+                }
+            }
+            final User user = new User(email, password, userName);
+            userDAO.add(user);
+            NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
+        }
     }
-   
 }
