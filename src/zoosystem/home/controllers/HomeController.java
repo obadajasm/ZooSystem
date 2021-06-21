@@ -5,6 +5,8 @@
  */
 package zoosystem.home.controllers;
 
+import DAOs.AnimalDAO;
+import DAOs.CategoryDAO;
 import DAOs.UserDAO;
 import Utils.NavigationHelper;
 import java.io.IOException;
@@ -23,7 +25,10 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import models.Animal;
+import models.Category;
 import models.User;
 
 /**
@@ -41,6 +46,17 @@ public class HomeController implements Initializable {
     private MenuItem exiteMenuItem;
     @FXML
     private MenuItem usersMenuItem;
+    @FXML
+    private TableView<Category> categoryTable;
+    @FXML
+    private TableView<Animal> animalTable;
+
+    private final CategoryDAO categoryDAO = new CategoryDAO();
+    private final AnimalDAO animalDAO = new AnimalDAO();
+    @FXML
+    private TextField animalSearchTF;
+    @FXML
+    private TextField catSearchTF;
 
     /**
      * Initializes the controller class.
@@ -50,11 +66,26 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         exiteMenuItem.setOnAction(e -> {
             System.exit(0);
         });
-  }
+
+        final ArrayList<Category> categories = categoryDAO.getAll();
+        final ArrayList<Animal> animals = animalDAO.getAll();
+
+        for (Animal animal : animals) {
+            for (Category c : categories) {
+                if (animal.getCategoryID() == c.getID()) {
+                    animal.setCategoryName(c.getName());
+
+                }
+            }
+        }
+
+        addCategoriesTable(categories);
+        addAnimalTable(animals);
+
+    }
 
     @FXML
     private void CategoryMenuItemOnClick(ActionEvent event) throws IOException {
@@ -70,10 +101,85 @@ public class HomeController implements Initializable {
     @FXML
     private void usersMenuItemOnCLick(ActionEvent event) {
         try {
-                NavigationHelper.getInstance().navigateTo(MenuBar, "home/view/UserShowFXML.fxml", "Show users");
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            NavigationHelper.getInstance().navigateTo(MenuBar, "home/view/UserShowFXML.fxml", "Show users");
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+    private void addCategoriesTable(ArrayList<Category> categories) {
+
+        TableColumn nameColumn = new TableColumn("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
+
+        TableColumn descColumn = new TableColumn("Description");
+        descColumn.setCellValueFactory(new PropertyValueFactory("description"));
+
+        nameColumn.setPrefWidth(300);
+        descColumn.setPrefWidth(300);
+
+        ObservableList<Category> list = FXCollections.observableArrayList(categories);
+
+        categoryTable.setItems(list);
+        categoryTable.getColumns().addAll(nameColumn, descColumn);
+
+        catSearchTF.setOnKeyPressed(e -> {
+            ArrayList<Category> temp = new ArrayList();
+            final String seatchedText = catSearchTF.getText().toLowerCase().trim();
+            for (Category cat : categories) {
+
+                if (cat.getName().toLowerCase().contains(seatchedText)
+                        || cat.getDescription().toLowerCase().contains(seatchedText)) {
+                    temp.add(cat);
+                }
+            }
+            categoryTable.setItems(FXCollections.observableArrayList(temp));
+
+        });
+
+    }
+
+    private void addAnimalTable(ArrayList<Animal> animals) {
+
+        TableColumn nameColumn = new TableColumn("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
+
+        TableColumn genderColumn = new TableColumn("Gender");
+        genderColumn.setCellValueFactory(new PropertyValueFactory("gender"));
+
+        TableColumn birthdateColumn = new TableColumn("Birthdate");
+        birthdateColumn.setCellValueFactory(new PropertyValueFactory("birthdate"));
+
+        TableColumn category_idColumn = new TableColumn("Category");
+        category_idColumn.setCellValueFactory(new PropertyValueFactory("categoryName"));
+
+        TableColumn weightColumn = new TableColumn("Weight");
+        weightColumn.setCellValueFactory(new PropertyValueFactory("weight"));
+
+        nameColumn.setPrefWidth(200);
+        genderColumn.setPrefWidth(80);
+        birthdateColumn.setPrefWidth(100);
+        category_idColumn.setPrefWidth(150);
+        weightColumn.setPrefWidth(80);
+
+        ObservableList<Animal> list = FXCollections.observableArrayList(animals);
+
+        animalTable.setItems(list);
+        animalTable.getColumns().addAll(nameColumn, genderColumn, birthdateColumn, category_idColumn, weightColumn);
+
+        animalSearchTF.setOnKeyPressed(e -> {
+            ArrayList<Animal> temp = new ArrayList();
+            final String seatchedText = animalSearchTF.getText().toLowerCase().trim();
+            for (Animal animal : animals) {
+
+                if (animal.getName().toLowerCase().contains(seatchedText)
+                        || animal.getCategoryName().toLowerCase().contains(seatchedText)) {
+                    temp.add(animal);
+                }
+            }
+            animalTable.setItems(FXCollections.observableArrayList(temp));
+
+        });
+
+    }
 }

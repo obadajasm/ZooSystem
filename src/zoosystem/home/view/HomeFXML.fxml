@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zoosystem.home.controllers.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zoosystem.home.controllers.HomeController">
    <children>
-      <Label layoutX="259.0" layoutY="155.0" prefHeight="17.0" prefWidth="147.0" text="HOME" />
-      <MenuBar fx:id="MenuBar" layoutX="4.0" layoutY="2.0" prefHeight="25.0" prefWidth="592.0">
+      <MenuBar fx:id="MenuBar" layoutX="4.0" layoutY="2.0" prefHeight="25.0" prefWidth="673.0">
         <menus>
           <Menu mnemonicParsing="false" text="Add">
             <items>
@@ -33,5 +33,9 @@
           </Menu>
         </menus>
       </MenuBar>
+      <TableView fx:id="categoryTable" layoutX="38.0" layoutY="68.0" prefHeight="190.0" prefWidth="548.0" />
+      <TableView fx:id="animalTable" layoutX="38.0" layoutY="311.0" prefHeight="215.0" prefWidth="548.0" />
+      <TextField fx:id="animalSearchTF" layoutX="38.0" layoutY="278.0" prefHeight="25.0" prefWidth="210.0" promptText="Animal Search" />
+      <TextField fx:id="catSearchTF" layoutX="38.0" layoutY="37.0" prefHeight="25.0" prefWidth="210.0" promptText="Category Search" />
    </children>
 </AnchorPane>

@@ -8,11 +8,17 @@ public class Animal {
     private String gender;
     private LocalDate birthdate;
     private int categoryID;
+    private String categoryName;
+   
     private int weight;
     private int isSick;
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
+    public String getCategoryName() { return categoryName ; }
+    public void setCategoryName(String catName) {
+    categoryName=catName;
+            }
     public int getID() { return id; }
 
     public Animal(String name, String gender, LocalDate birthdate, int categoryID, int weight) {
