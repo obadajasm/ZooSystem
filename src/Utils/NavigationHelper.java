@@ -49,5 +49,14 @@ public class NavigationHelper {
             System.out.println("Error in navigate to:"+e.getMessage());
             }
     }
+      
+      public  void goHome(Node node) throws IOException{
+        
+        try{
+        navigateTo(node,"home/view/HomeFXML.fxml","Zoo System");
+        }catch(IOException e ){
+            System.out.println("Error in navigate to:"+e.getMessage());
+            }
+    }
     
 }

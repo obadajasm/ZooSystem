@@ -54,16 +54,7 @@ public class HomeController implements Initializable {
         exiteMenuItem.setOnAction(e -> {
             System.exit(0);
         });
-//      usersMenuItem.setOnAction(e->{
-//            try {
-////                NavigationHelper.getInstance().navigateTo(MenuBar, "home/view/UserShowFXML.fxml", "Show users");
-//            } catch (IOException ex) {
-//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//      });
-       
-    }
+  }
 
     @FXML
     private void CategoryMenuItemOnClick(ActionEvent event) throws IOException {

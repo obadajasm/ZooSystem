@@ -40,7 +40,7 @@ public class DialogUtil {
     }
 
     public  void show(String contentText,String title ) {
-             show( Alert.AlertType.NONE,contentText,title,ButtonType.YES);
+             show( Alert.AlertType.NONE,contentText,title,ButtonType.CLOSE);
 
     }
 

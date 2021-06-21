@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,5 +9,6 @@
     <children>
       <TableView fx:id="userTableView" layoutX="75.0" layoutY="70.0" prefHeight="288.0" prefWidth="450.0" />
       <TextField fx:id="searchTF" layoutX="75.0" layoutY="29.0" onKeyPressed="#searchTFKeyPressed" prefHeight="25.0" prefWidth="246.0" promptText="Search" />
+      <Button fx:id="backBtn" layoutX="490.0" layoutY="29.0" mnemonicParsing="false" text="Back" />
    </children>
 </AnchorPane>

@@ -116,7 +116,7 @@ public class AuthController implements Initializable {
                     return;
                 }
             }
-            final User user = new User(email, password, userName);
+            final User user = new User(email, password, userName,"user");
             userDAO.add(user);
             NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
         }

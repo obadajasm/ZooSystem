@@ -8,8 +8,8 @@
    <children>
              <Button id="backBtn" fx:id="backBtn" layoutX="352.0" layoutY="244.0" mnemonicParsing="false" onAction="#BackBtnClick" prefHeight="25.0" prefWidth="47.0" text="Back" />
 
-          <TextField fx:id="CategoryNameAddTF" layoutX="236.0" layoutY="60" promptText="Category Name"  />
-      <TextField fx:id="CategoryNameDescriptionTF" layoutX="236.0" layoutY="102" promptText="Category Description" />
+          <TextField fx:id="CategoryNameAddTF" layoutX="236.0" layoutY="148.0" promptText="Category Name" />
+      <TextField fx:id="CategoryNameDescriptionTF" layoutX="236.0" layoutY="194.0" promptText="Category Description" />
       <Button fx:id="CategoryAddBtn" layoutX="236.0" layoutY="244.0" mnemonicParsing="false" onAction="#AddCategoryBtnClick" text="Add Category" />
 
    </children>

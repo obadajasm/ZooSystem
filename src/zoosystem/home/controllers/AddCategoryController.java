@@ -5,6 +5,8 @@
  */
 package zoosystem.home.controllers;
 
+import DAOs.AnimalDAO;
+import DAOs.CategoryDAO;
 import Utils.DialogUtil;
 import Utils.NavigationHelper;
 import java.io.IOException;
@@ -19,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import models.Category;
 
 /**
  * FXML Controller class
@@ -36,12 +39,15 @@ public class AddCategoryController implements Initializable {
     @FXML
     private Button CategoryAddBtn;
 
+    private CategoryDAO categoryDAO = new CategoryDAO();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+//        System.out.println("S"+new CategoryDAO().getAll().size());
+//        System.out.println("S"+ new AnimalDAO().getAll().size());
     }    
 
     @FXML
@@ -54,14 +60,19 @@ public class AddCategoryController implements Initializable {
             DialogUtil.getInstance().show("Category name and description are required", "Error");
                    return; 
         }
-        
-          
+final boolean isDone=                          categoryDAO.add(new Category(name,desc));
+
+if(isDone){
+    DialogUtil.getInstance().show("Done", "");
+    CategoryNameAddTF.clear();
+    CategoryNameDescriptionTF.clear();
+}
     }
 
     @FXML
     private void BackBtnClick(ActionEvent event) throws IOException {
         
-               NavigationHelper.getInstance(). navigateTo(backBtn,"home/view/HomeFXML.fxml");
+               NavigationHelper.getInstance(). goHome(CategoryNameAddTF);
 
     }
     
