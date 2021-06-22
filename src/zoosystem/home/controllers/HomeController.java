@@ -57,6 +57,8 @@ public class HomeController implements Initializable {
     private TextField animalSearchTF;
     @FXML
     private TextField catSearchTF;
+    @FXML
+    private MenuItem StatisticsMI;
 
     /**
      * Initializes the controller class.
@@ -155,6 +157,9 @@ public class HomeController implements Initializable {
 
         TableColumn weightColumn = new TableColumn("Weight");
         weightColumn.setCellValueFactory(new PropertyValueFactory("weight"));
+        
+            TableColumn isSickColumn = new TableColumn("Is Sick?");
+        isSickColumn.setCellValueFactory(new PropertyValueFactory("isSick"));
 
         nameColumn.setPrefWidth(200);
         genderColumn.setPrefWidth(80);
@@ -165,7 +170,7 @@ public class HomeController implements Initializable {
         ObservableList<Animal> list = FXCollections.observableArrayList(animals);
 
         animalTable.setItems(list);
-        animalTable.getColumns().addAll(nameColumn, genderColumn, birthdateColumn, category_idColumn, weightColumn);
+        animalTable.getColumns().addAll(nameColumn, genderColumn, birthdateColumn, category_idColumn, weightColumn,isSickColumn);
 
         animalSearchTF.setOnKeyPressed(e -> {
             ArrayList<Animal> temp = new ArrayList();
@@ -181,5 +186,12 @@ public class HomeController implements Initializable {
 
         });
 
+    }
+
+    @FXML
+    private void StatisticsMIClick(ActionEvent event) throws IOException {
+                    NavigationHelper.getInstance().navigateTo(MenuBar, "home/view/StatisticsFXML.fxml", "Show users");
+
+        
     }
 }

@@ -11,7 +11,7 @@ public class Animal {
     private String categoryName;
    
     private int weight;
-    private int isSick;
+    private Boolean isSick;
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
@@ -28,13 +28,14 @@ public class Animal {
         this.categoryID = categoryID;
         this.weight = weight;
     }
-    public Animal(int id,String name, String gender, LocalDate birthdate, int categoryID, int weight) {
+    public Animal(int id,String name, String gender, LocalDate birthdate, int categoryID, int weight,Boolean isSick) {
         this.id=id;
         this.name = name;
         this.gender = gender;
         this.birthdate = birthdate;
         this.categoryID = categoryID;
         this.weight = weight;
+        this.isSick=isSick;
     }
     public void setID(int value) { this.id = value; }
 
@@ -55,8 +56,8 @@ public class Animal {
     public int getWeight() { return weight; }
     public void setWeight(int value) { this.weight = value; }
 
-    public int getIsSick() { return isSick; }
-    public void setIsSick(int value) { this.isSick = value; }
+    public Boolean getIsSick() { return isSick; }
+    public void setIsSick(Boolean value) { this.isSick = value; }
 
     public LocalDate getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDate value) { this.createdAt = value; }

@@ -36,6 +36,7 @@ public class AnimalDAO {
         // Add the new book record to the list
         return rows==1;
     }
+      
    
       
       
@@ -45,20 +46,16 @@ public class AnimalDAO {
         String query = "Select * from animals";
         // Execute the query
         ResultSet result = BasicDB.retrieve(query);
-        // Copy the returned result set into the array list
         try {
             while (result.next()) {
-                // Form the BookModel object for each returned row
-                // The first index of the columns is 1 not 0
-               
-                // Add the record to the list
                 final Animal animal = new Animal(
                         result.getInt(1),
                 result.getString(2),
                 result.getString(3),
                LocalDate.parse(result.getString(4)) ,
                 result.getInt(5),
-                result.getInt(6)
+                result.getInt(6),
+                result.getBoolean(7)
                 );
                 res.add(animal);
             }
