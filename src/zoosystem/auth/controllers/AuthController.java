@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,23 +64,24 @@ public class AuthController implements Initializable {
                 return;
             }
 
-          //initialize the Pattern object
-         Matcher matcher = pattern.matcher(email);
-         if(!matcher.matches()){
-           DialogUtil.getInstance().show("Please Enter a Valid Email", "Error");
-                return;
-         }
+        
          
      
             
             
             for (User user : users) {
                 if (email.equals(user.getEmail().toLowerCase()) && password.equals(user.getPassword().toLowerCase())) {
-                    NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
-                    break;
+                    System.out.println(user.getRole());
+                    if(user.getRole().equals("admin")){
+                                          NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
+
+                    }else{
+                            NavigationHelper.getInstance().navigateTo(loginBtn, "homevisitor/view/homeVisitorFXML.fxml");
+                    }
+                    return;
                 }
             }
-
+                
             ////show error msg
             DialogUtil.getInstance().show("Invalid Email or Passowrd", "Error");
 
@@ -102,6 +104,9 @@ public class AuthController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       
+        
+        
         userNameTF.setVisible(!isLogin);
         signupBtn.setPrefWidth(100.0);
         loginBtn.setPrefWidth(150.0);
@@ -155,6 +160,8 @@ public class AuthController implements Initializable {
                     DialogUtil.getInstance().show("Please pick a longer password", "Error");
                     return;
                 }
+           
+           
             final User user = new User(email, password, userName, "user");
             if (userDAO.add(user)) {
                 NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");

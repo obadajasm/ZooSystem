@@ -69,7 +69,7 @@ public class UserDAO {
                 // The first index of the columns is 1 not 0
                
                 // Add the record to the list
-                res.add(new User(result.getString(3),result.getString(4),result.getString(2),"user"));
+                res.add(new User(result.getString(3),result.getString(4),result.getString(2),result.getString(7)));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

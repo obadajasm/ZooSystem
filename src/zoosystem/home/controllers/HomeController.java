@@ -194,4 +194,11 @@ public class HomeController implements Initializable {
 
         
     }
+
+    @FXML
+    private void openCloseTimeOnClick(ActionEvent event) throws IOException {
+         NavigationHelper.getInstance().navigateTo(MenuBar, "home/view/openCloseFXML.fxml", "Show users");
+
+        
+    }
 }

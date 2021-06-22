@@ -58,5 +58,25 @@ public class CategoryDAO {
         
         return res;
     }
+       
+//          public ArrayList<Category> getCatIdByName(String name) {
+//        ArrayList<Category> res = new ArrayList<>();
+//        // Form the Select * query
+//        String query = "Select id from categories where name="+name;
+//        // Execute the query
+//        ResultSet result = BasicDB.retrieve(query);
+//        // Copy the returned result set into the array list
+//        try {
+//              System.out.println("SS"+result);
+//
+//            while (result.next()) {
+//                System.out.println("SS"+result);
+//            }
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        
+//        return res;
+//    }
 }
 

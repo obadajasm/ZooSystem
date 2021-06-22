@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zoosystem.home.controllers.OpenCloseFXMLController">
+   <children>
+      <TextField fx:id="openTimeTF" layoutX="209.0" layoutY="117.0" promptText="Open Time" />
+      <TextField fx:id="closeTimeTF" layoutX="209.0" layoutY="165.0" promptText="Close Time" />
+      <Button fx:id="addBtn" layoutX="209.0" layoutY="218.0" mnemonicParsing="false" onAction="#addBtnClick" prefHeight="38.0" prefWidth="114.0" text="Add" />
+      <Button fx:id="backBtn" layoutX="358.0" layoutY="225.0" mnemonicParsing="false" onAction="#backBtnClick" text="Back" />
+   </children>
+</AnchorPane>

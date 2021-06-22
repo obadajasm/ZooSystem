@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zoosystem.homevisitor.controllers.HomeVisitorFXMLController">
+   <children>
+      <ComboBox fx:id="catComboBox" layoutX="32.0" layoutY="113.0" onAction="#catComboBoxonActon" prefHeight="29.0" prefWidth="255.0" promptText="Select a Category" />
+      <Button fx:id="checkBtn" layoutX="32.0" layoutY="52.0"  onAction="#checkBtnnActon" mnemonicParsing="false" prefHeight="37.0" prefWidth="255.0" text="Check if the zoo currently open" />
+      <Group layoutX="369.0" layoutY="35.0">
+         <children>
+            <ScrollPane fx:id="scrollPane" hbarPolicy="ALWAYS" hvalue="1.0" prefHeight="339.0" prefWidth="223.0" vbarPolicy="ALWAYS" vvalue="1.0">
+              <content>
+                <AnchorPane fx:id="animalShowList" minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="228.0" />
+              </content>
+            </ScrollPane>
+         </children>
+      </Group>
+      <HBox fx:id="hBox" layoutX="48.0" layoutY="186.0" prefHeight="100.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

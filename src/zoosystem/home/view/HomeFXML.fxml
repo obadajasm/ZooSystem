@@ -15,6 +15,7 @@
             <items>
               <MenuItem id="CategoryMenuItem" mnemonicParsing="false" onAction="#CategoryMenuItemOnClick" text="Category" />
    <MenuItem id="AnimalMenuItem" mnemonicParsing="false" onAction="#AnimalMenuItemOnClick" text="Animal" />
+   <MenuItem id="openCloseTimeMenuItem" mnemonicParsing="false" onAction="#openCloseTimeOnClick" text="open Close Time" />
 
             </items>
             

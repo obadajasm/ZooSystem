@@ -10,7 +10,6 @@ public class Category {
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private String description;
-    private String catName;
 
     public int getID() { return id; }
     public void setID(int value) { this.id = value; }
@@ -24,7 +23,6 @@ public class Category {
         this.name = name;
         this.description = description;
     }
-    public String getCatName() { return catName; }
 
     public String getName() { return name; }
     public void setName(String value) { this.name = value; }
