@@ -13,6 +13,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,10 +45,13 @@ public class AuthController implements Initializable {
 
     private Boolean isLogin = true;
     private final UserDAO userDAO = new UserDAO();
+                 final String regex = "^(.+)@(.+)$";
+                        Pattern pattern = Pattern.compile(regex);
+
+
 
     @FXML
     private void loginBtnClck(ActionEvent event) throws IOException, InvocationTargetException {
-            NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
 
         if (isLogin) {
             final ArrayList<User> users = userDAO.getUsers();
@@ -57,14 +63,28 @@ public class AuthController implements Initializable {
                 return;
             }
 
+          //initialize the Pattern object
+         Matcher matcher = pattern.matcher(email);
+         if(!matcher.matches()){
+           DialogUtil.getInstance().show("Please Enter a Valid Email", "Error");
+                return;
+         }
+         
+     
+            
+            
             for (User user : users) {
                 if (email.equals(user.getEmail().toLowerCase()) && password.equals(user.getPassword().toLowerCase())) {
                     NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
                     break;
                 }
             }
+
+            ////show error msg
+            DialogUtil.getInstance().show("Invalid Email or Passowrd", "Error");
+
         } else {
-                        ///toogle login/signup mode
+            ///toogle login/signup mode
 
             isLogin = !isLogin;
             signupBtn.setLayoutY(350.0);
@@ -85,6 +105,12 @@ public class AuthController implements Initializable {
         userNameTF.setVisible(!isLogin);
         signupBtn.setPrefWidth(100.0);
         loginBtn.setPrefWidth(150.0);
+          
+        emailTF.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$\"")) {
+//                emailTF.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
 
     }
 
@@ -109,6 +135,7 @@ public class AuthController implements Initializable {
                 DialogUtil.getInstance().show("Passowrd, Email, User Name are required", "Error");
                 return;
             }
+            
             final ArrayList<User> users = userDAO.getUsers();
             for (User user : users) {
                 if (email.trim().equals(user.getEmail().toLowerCase())) {
@@ -116,9 +143,26 @@ public class AuthController implements Initializable {
                     return;
                 }
             }
-            final User user = new User(email, password, userName,"user");
-            userDAO.add(user);
-            NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
+            
+              //initialize the Pattern object
+         Matcher matcher = pattern.matcher(email);
+         if(!matcher.matches()){
+           DialogUtil.getInstance().show("Please Enter a Valid Email", "Error");
+                return;
+         }
+         
+           if (password.length()<6) {
+                    DialogUtil.getInstance().show("Please pick a longer password", "Error");
+                    return;
+                }
+            final User user = new User(email, password, userName, "user");
+            if (userDAO.add(user)) {
+                NavigationHelper.getInstance().navigateTo(loginBtn, "home/view/HomeFXML.fxml");
+
+            } else {
+                DialogUtil.getInstance().show("Error", "Error");
+
+            }
         }
     }
 }
