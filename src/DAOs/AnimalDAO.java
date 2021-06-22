@@ -67,6 +67,33 @@ public class AnimalDAO {
         return res;
     }
 
+       public ArrayList<Animal> getAllSickAnimals() {
+        ArrayList<Animal> res = new ArrayList<>();
+        //"Select * from items inner join companies on items.company_id = companies.id";
+        // Form the Select * query
+        String query = "Select * from animals where is_sick = 1";
+        // Execute the query
+        ResultSet result = BasicDB.retrieve(query);
+        try {
+            while (result.next()) {
+                final Animal animal = new Animal(
+                        result.getInt(1),
+                result.getString(2),
+                result.getString(3),
+               LocalDate.parse(result.getString(4)) ,
+                result.getInt(5),
+                result.getInt(6),
+                result.getBoolean(7)
+                );
+                res.add(animal);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return res;
+    }
+
 
        public ArrayList<Animal> getAllByCatID(int catId) {
         ArrayList<Animal> res = new ArrayList<>();

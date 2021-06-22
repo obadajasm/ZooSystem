@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="zoosystem.home.controllers.StatisticsFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zoosystem.home.controllers.StatisticsFXMLController">
    <children>
-      <Label  layoutX="177.0" layoutY="113.0" text="Category:" />
-      <Label fx:id="catNumbers" layoutX="228.0" layoutY="139.0" text="totlall number:" />
+      <Label layoutX="177.0" layoutY="113.0" text="Category:" />
+      <Label fx:id="catNumbers" layoutX="228.0" layoutY="139.0" text="Totlall number:" />
       <Label layoutX="177.0" layoutY="170.0" prefHeight="17.0" prefWidth="123.0" text="Animals:" />
       <Label fx:id="animalNumbers" layoutX="228.0" layoutY="192.0" prefHeight="17.0" prefWidth="123.0" text="Total number:" />
-      <Label fx:id="animalSickNumbers" layoutX="228.0" layoutY="219.0" prefHeight="17.0" prefWidth="123.0" text="sick animals:" />
+      <Label fx:id="animalSickNumbers" layoutX="228.0" layoutY="219.0" prefHeight="17.0" prefWidth="123.0" text="Sick animals:" />
+      <Button fx:id="backBtn" layoutX="168.0" layoutY="277.0" mnemonicParsing="false" onAction="#backBtnClick" prefHeight="25.0" prefWidth="115.0" text="Back" />
    </children>
 </AnchorPane>

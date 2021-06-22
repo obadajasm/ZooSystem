@@ -6,6 +6,7 @@
 package zoosystem;
 
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -20,10 +21,10 @@ public class ZooSystem extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("auth\\view\\Auth.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("auth/view/Auth.fxml"));
             AnchorPane root = loader.load();
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Hello World!");
+            primaryStage.setTitle("Zoo system");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {

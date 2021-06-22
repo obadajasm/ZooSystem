@@ -7,11 +7,15 @@ package zoosystem.home.controllers;
 
 import DAOs.AnimalDAO;
 import DAOs.CategoryDAO;
+import Utils.NavigationHelper;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import models.Animal;
 
@@ -31,6 +35,8 @@ public class StatisticsFXMLController implements Initializable {
 
     private final CategoryDAO categoryDAO = new CategoryDAO();
     private final AnimalDAO animalDAO = new AnimalDAO();
+    @FXML
+    private Button backBtn;
     /**
      * Initializes the controller class.
      */
@@ -39,8 +45,15 @@ public class StatisticsFXMLController implements Initializable {
         // TODO
         final ArrayList<Animal> animals = animalDAO.getAll();
         
-//        animalNumbers.setText(animalNumbers.getText()+" "+animalDAO.size() );
-//        animalSickNumbers.setText(animalNumbers.getText()+" "+animalDAO.getsSickAnimalsNumber());
+        catNumbers.setText(catNumbers.getText()+" "+categoryDAO.getAll().size() );
+        animalNumbers.setText(animalNumbers.getText()+" "+animals.size() );
+        animalSickNumbers.setText(animalSickNumbers.getText()+" "+animalDAO.getAllSickAnimals().size());
     }    
+
+    @FXML
+    private void backBtnClick(ActionEvent event) throws IOException {
+                NavigationHelper.getInstance().goHome(catNumbers);
+
+    }
     
 }
