@@ -41,8 +41,9 @@ public class AnimalDAO {
       
        public ArrayList<Animal> getAll() {
         ArrayList<Animal> res = new ArrayList<>();
+        //"Select * from items inner join companies on items.company_id = companies.id";
         // Form the Select * query
-        String query = "Select * from animals";
+        String query = "Select * from animals inner join categories on animals.category_id=categories.id";
         // Execute the query
         ResultSet result = BasicDB.retrieve(query);
         try {
@@ -56,6 +57,7 @@ public class AnimalDAO {
                 result.getInt(6),
                 result.getBoolean(7)
                 );
+                animal.setCategoryName( result.getString(11));
                 res.add(animal);
             }
         } catch (SQLException e) {

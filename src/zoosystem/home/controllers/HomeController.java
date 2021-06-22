@@ -75,14 +75,7 @@ public class HomeController implements Initializable {
         final ArrayList<Category> categories = categoryDAO.getAll();
         final ArrayList<Animal> animals = animalDAO.getAll();
 
-        for (Animal animal : animals) {
-            for (Category c : categories) {
-                if (animal.getCategoryID() == c.getID()) {
-                    animal.setCategoryName(c.getName());
-
-                }
-            }
-        }
+   
 
         addCategoriesTable(categories);
         addAnimalTable(animals);
