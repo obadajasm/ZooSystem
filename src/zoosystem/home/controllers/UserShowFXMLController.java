@@ -74,11 +74,11 @@ public class UserShowFXMLController implements Initializable {
             }
         
         });
-
     }
 
     @FXML
     private void searchTFKeyPressed(KeyEvent event) {
+        System.out.println("ss"+searchTF.getText());
         ArrayList<User> temp = new ArrayList();
         final String seatchedText=searchTF.getText().toLowerCase().trim();
         for (User user : users) {

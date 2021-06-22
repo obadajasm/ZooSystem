@@ -118,7 +118,7 @@ public class HomeController implements Initializable {
         categoryTable.setItems(list);
         categoryTable.getColumns().addAll(nameColumn, descColumn);
 
-        catSearchTF.setOnKeyPressed(e -> {
+        catSearchTF.setOnKeyReleased(e -> {
             ArrayList<Category> temp = new ArrayList();
             final String seatchedText = catSearchTF.getText().toLowerCase().trim();
             for (Category cat : categories) {
@@ -165,7 +165,7 @@ public class HomeController implements Initializable {
         animalTable.setItems(list);
         animalTable.getColumns().addAll(nameColumn, genderColumn, birthdateColumn, category_idColumn, weightColumn,isSickColumn);
 
-        animalSearchTF.setOnKeyPressed(e -> {
+        animalSearchTF.setOnKeyReleased(e -> {
             ArrayList<Animal> temp = new ArrayList();
             final String seatchedText = animalSearchTF.getText().toLowerCase().trim();
             for (Animal animal : animals) {

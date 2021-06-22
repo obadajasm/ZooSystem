@@ -8,7 +8,7 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zoosystem.home.controllers.UserShowFXMLController">
     <children>
       <TableView fx:id="userTableView" layoutX="75.0" layoutY="70.0" prefHeight="288.0" prefWidth="450.0" />
-      <TextField fx:id="searchTF" layoutX="75.0" layoutY="29.0" onKeyPressed="#searchTFKeyPressed" prefHeight="25.0" prefWidth="246.0" promptText="Search" />
+      <TextField fx:id="searchTF" layoutX="75.0" layoutY="29.0" onKeyReleased="#searchTFKeyPressed" prefHeight="25.0" prefWidth="246.0" promptText="Search" />
       <Button fx:id="backBtn" layoutX="490.0" layoutY="29.0" mnemonicParsing="false" text="Back" />
    </children>
 </AnchorPane>
