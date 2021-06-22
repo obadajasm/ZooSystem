@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -35,7 +36,7 @@ public class AddCategoryController implements Initializable {
     @FXML
     private TextField CategoryNameAddTF;
     @FXML
-    private TextField CategoryNameDescriptionTF;
+    private TextArea CategoryNameDescriptionTF;
     @FXML
     private Button CategoryAddBtn;
 
